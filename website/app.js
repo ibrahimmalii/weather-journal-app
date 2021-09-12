@@ -7,7 +7,10 @@ var contentText = document.getElementById('content');
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-var CurrentDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+
+//====================== Because months started with index 0 ====================================//
+let month = d.getMonth() + 1;
+var CurrentDate = month + '.' + d.getDate() + '.' + d.getFullYear();
 
 
 // Api key caredenalities 
@@ -48,9 +51,9 @@ generateBtn.addEventListener('click', async () => {
 
     resData = await resData.json();
     console.log('response data => ', resData);
-    date.innerText = `The Current Date Is : ${resData.CurrentDate}`;
-    temp.innerText = `Temp is equal : ${resData.temperature}C`;
-    contentText.innerText = `Today's weather : ${resData.content}`;
+    date.innerHTML = `<p>The Current Date Is : ${resData.CurrentDate}</p>`;
+    temp.innerHTML = `<p>Temp is equal : ${resData.temperature}C</p>`;
+    contentText.innerHTML = `<p>Today's weather : ${resData.content}</p>`;
 
 });
 
